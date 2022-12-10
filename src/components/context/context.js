@@ -3,7 +3,11 @@ import { reducer } from "../reducer/reducer";
 
 
 const initialState = {
-  list: [],
+  hits: [],
+  nbHits: 0,
+  nbPages: 50,
+  page: 0,
+  query: ""
 }
 
 const AppContext = React.createContext();
@@ -13,7 +17,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <>
-        <AppContext.Provider value={{state}}>
+        <AppContext.Provider value={{state, dispatch}}>
             {children}
         </AppContext.Provider>
     </>

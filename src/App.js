@@ -1,19 +1,16 @@
-import { Blogs } from "./components/Blogs";
-import { useGlobalContext } from "./components/context/context";
-import { Pagination } from "./components/Pagination";
-import { Search } from "./components/Search";
+import Blogs from "./components/Blogs";
+import Navbar from "./components/Navbar";
+import Pagination from "./components/Pagination";
+import Search from "./components/Search";
 
 function App() {
-  const data = useGlobalContext();
-  console.log(data)
   return (
-      <>
-      {data}
-
+    <>
+      <Navbar />
       <Search />
       <Pagination />
       <Blogs />
-      </>
+    </>
   );
 }
 

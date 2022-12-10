@@ -1,7 +1,11 @@
 import React from 'react'
 
-export const Search = () => {
+const Search = () => {
   return (
-    <div>Search</div>
+    <div className='container'>
+      <input className="form-control" type="text" />
+    </div>
   )
 }
+
+export default Search;
