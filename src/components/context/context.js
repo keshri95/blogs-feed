@@ -4,20 +4,20 @@ import { reducer } from "../reducer/reducer";
 
 const initialState = {
   hits: [],
-  nbHits: 0,
   nbPages: 50,
   page: 0,
-  query: ""
+  query: "",
+  isLoading: null,
 }
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [state , dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <>
-        <AppContext.Provider value={{state, dispatch}}>
+        <AppContext.Provider value={{ ...state, dispatch }}>
             {children}
         </AppContext.Provider>
     </>
