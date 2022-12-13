@@ -6,12 +6,13 @@ export const reducer = (state, action) => {
                 ...state,
                 hits:action.payload.hits,
             }
-
         case "LOADING":
             return {
                 ...state,
                 isLoading: true,
             }
+        
+
         
         default :
             return state
