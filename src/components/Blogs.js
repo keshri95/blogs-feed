@@ -1,14 +1,23 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+// import axios from "axios";
+// import React, { useEffect } from "react";
 import { useGlobalContext } from "./context/context";
-import {API} from "./context/context"
+// import {API} from "./context/context"
 
 // let API = "https://hn.algolia.com/api/v1/search?";
 
 const Blogs = () => {
   const { hits, dispatch, isLoading, state,query } = useGlobalContext();
 
-  
+
+
+  const deleteData = (id) => {
+    dispatch({
+      type: "DELETE_DATA",
+      payload: id,
+    });
+  };
+
+  /*  
   const getSomeApi = async (url) => {
 
     dispatch({
@@ -47,6 +56,10 @@ const Blogs = () => {
     // getSomeApi(`${API}`);
 
   },[state.query]);
+
+  */
+
+
 
   return (
     <>

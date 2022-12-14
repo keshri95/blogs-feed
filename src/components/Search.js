@@ -1,9 +1,26 @@
 import React from 'react'
+import { useGlobalContext } from './context/context';
 
 const Search = () => {
+
+  const { dispatch, query } = useGlobalContext();
+
+  const searchBlogs = (id) => {
+    dispatch({
+      type: "SEARCH_BLOGS",
+      payload: id,
+    })
+  }
+
+
   return (
     <div className='container'>
-      <input className="form-control" type="text" />
+      <form onSubmit={(e) => e.preventDefault()}>
+
+        <input className="form-control" type="text" value={query} onChange={(e) =>searchBlogs(e.target.value) } 
+        />
+
+      </form>
     </div>
   )
 }
