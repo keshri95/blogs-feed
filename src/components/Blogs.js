@@ -1,20 +1,22 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "./context/context";
+import {API} from "./context/context"
 
-let API = "https://hn.algolia.com/api/v1/search?";
+// let API = "https://hn.algolia.com/api/v1/search?";
 
 const Blogs = () => {
-  const { hits, dispatch, isLoading } = useGlobalContext();
+  const { hits, dispatch, isLoading, state,query } = useGlobalContext();
 
-  const getSomeApi = async () => {
+  
+  const getSomeApi = async (url) => {
 
     dispatch({
       type: "LOADING",
     });
 
     try {
-      const res = await axios.get(API);
+      const res = await axios.get(url);
       const data = await res.data;
 
       console.log(data);
@@ -25,16 +27,26 @@ const Blogs = () => {
           hits: data.hits,
         },
       });
+
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  const deleteData = (id) => {
+    dispatch({
+      type: "DELETE_DATA",
+      payload: id,
+    });
+  };
 
 
   useEffect(() => {
-    getSomeApi();
-  }, []);
+    getSomeApi(`${API}query=${state.query}&page=${state.page}`);
+
+    // getSomeApi(`${API}`);
+
+  },[state.query]);
 
   return (
     <>
@@ -61,7 +73,7 @@ const Blogs = () => {
                         <a
                           href="#"
                           className="btn btn-danger"
-                          
+                          onClick={() => deleteData(objectID)}
                         >
                           DELETE
                         </a>
