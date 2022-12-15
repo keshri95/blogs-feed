@@ -8,9 +8,9 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     hits: [],
-    nbPages: 50,
+    nbPages: 0,
     page: 0,
-    query: "CSS",
+    query: "",
     isLoading: null,
   });
   
@@ -31,7 +31,8 @@ const AppProvider = ({ children }) => {
       dispatch({
         type: "DISPLAY_DATA",
         payload: {
-          hits: data.hits,
+          hits: data.hits, 
+          nbPages: data.nbPages,
         },
       });
 
@@ -44,7 +45,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     getSomeApi(`${API}query=${state.query}&page=${state.page}`);
 
-  },[state.query]);
+  },[state.query, state.page]);
 
 
 

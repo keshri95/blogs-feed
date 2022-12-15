@@ -5,6 +5,7 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 hits:action.payload.hits,
+                nbPages: action.payload.nbPages,
             }
         case "LOADING":
             return {
@@ -24,23 +25,7 @@ export const reducer = (state, action) => {
                 query: action.payload,
             }
         
-        /*
-        case "DISPLAY_PREV_PAGE":
-            return {
-                ...state,
-                page: 0,
-                nbPages: 50,
-            }
 
-            
-        case "DISPLAY_NEXT_PAGE":
-            return {
-                ...state,
-                page: 0,
-                nbPages: 50,
-            }
-
-        */
         
         default :
             return state
