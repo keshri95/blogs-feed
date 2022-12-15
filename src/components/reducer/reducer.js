@@ -25,6 +25,25 @@ export const reducer = (state, action) => {
                 query: action.payload,
             }
         
+        case "DISPLAY_PREV_PAGE":
+            let ignoreNegPage = state.page
+            {ignoreNegPage <= 0 ? (ignoreNegPage = 0) : (ignoreNegPage--)}
+            return {
+                ...state,
+                page: ignoreNegPage,
+            }
+
+            
+        case "DISPLAY_NEXT_PAGE":
+            let ignoreOutOfNextPage = state.page ++;
+
+            if (ignoreOutOfNextPage >= state.nbPages){
+                ignoreOutOfNextPage = 0
+            }
+            return {
+                ...state,
+                page: ignoreOutOfNextPage,
+            }
 
         
         default :
