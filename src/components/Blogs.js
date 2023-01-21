@@ -2,7 +2,7 @@ import { useGlobalContext } from "./context/context";
 
 const Blogs = () => {
   const { hits, dispatch, isLoading } = useGlobalContext();
-
+  console.log(hits);
 
   const deleteData = (id) => {
     dispatch({

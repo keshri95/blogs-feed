@@ -11,7 +11,7 @@ const AppProvider = ({ children }) => {
     nbPages: 0,
     page: 0,
     query: "",
-    isLoading: null,
+    isLoading: true,
   });
   
   let API = `https://hn.algolia.com/api/v1/search?`;

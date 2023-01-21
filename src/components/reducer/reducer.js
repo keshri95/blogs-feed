@@ -6,6 +6,7 @@ export const reducer = (state, action) => {
                 ...state,
                 hits:action.payload.hits,
                 nbPages: action.payload.nbPages,
+                isLoading: true,
             }
         case "LOADING":
             return {

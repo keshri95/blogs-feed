@@ -14,6 +14,7 @@ const Search = () => {
 
 
   return (
+    <>
     <div className='container'>
       <form onSubmit={(e) => e.preventDefault()}>
 
@@ -22,6 +23,7 @@ const Search = () => {
 
       </form>
     </div>
+    </>
   )
 }
 
