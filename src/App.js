@@ -1,17 +1,26 @@
-import Blogs from "./components/Blogs";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Pagination from "./components/Pagination";
-import Search from "./components/Search";
+import React, { Profiler, Suspense } from "react";
+const Navbar = React.lazy(() => import("./components/Navbar"));
+const Footer = React.lazy(() => import("./components/Footer"));
+const Blogs = React.lazy(() => import("./components/Blogs"));
+const Pagination = React.lazy(() => import("./components/Pagination"));
+const Search = React.lazy(() => import("./components/Search"));
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Search />
-      <Pagination />
-      <Blogs />
-      <Footer />
+      <Suspense fallback={<di>Loading.....</di>}>
+        <Profiler>
+          <Navbar />
+          <Profiler>
+            <Search />
+          </Profiler>
+          <Profiler>
+            <Pagination />
+          </Profiler>
+          <Blogs />
+          <Footer />
+        </Profiler>
+      </Suspense>
     </>
   );
 }
