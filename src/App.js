@@ -8,7 +8,7 @@ const Search = React.lazy(() => import("./components/Search"));
 function App() {
   return (
     <>
-      <Suspense fallback={<di>Loading.....</di>}>
+      <Suspense fallback={<div>Loading.....</div>}>
         <Profiler>
           <Navbar />
           <Profiler>
